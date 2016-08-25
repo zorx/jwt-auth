@@ -197,11 +197,13 @@ class JWTAuth
      *
      * @return JWTAuth
      */
-    public function parseToken($method = 'bearer', $header = 'authorization', $query = 'token')
+    public function parseToken($method = 'bearer', $header = 'authorization', $query = 'token', $cookie = 'access_token')
     {
         if (! $token = $this->parseAuthHeader($header, $method)) {
-            if (! $token = $this->request->query($query, false)) {
-                throw new JWTException('The token could not be parsed from the request', 400);
+            if (! $token = $this->request->cookie($cookie, false)) {
+                if (! $token = $this->request->query($query, false)) {
+                    throw new JWTException('The token could not be parsed from the request', 400);
+                }
             }
         }
 
