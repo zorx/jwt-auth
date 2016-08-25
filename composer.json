@@ -1,5 +1,5 @@
 {
-    "name": "tymon/jwt-auth",
+    "name": "zorx/jwt-auth",
     "description": "JSON Web Token Authentication for Laravel 4 and 5",
     "keywords": [
         "jwt",
