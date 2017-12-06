@@ -163,11 +163,11 @@ class JWTAuth
      *
      * @return bool|string
      */
-    public function getToken()
+    public function getToken($method = 'bearer', $header = 'authorization', $query = 'token', $cookie = 'access_token')
     {
         if (! $this->token) {
             try {
-                $this->parseToken();
+                $this->parseToken($method, $header, $query, $cookie);
             } catch (JWTException $e) {
                 return false;
             }
